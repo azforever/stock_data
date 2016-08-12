@@ -44,13 +44,13 @@ sqlite> select * from BABA limit 5;
 2014-09-25 00:00:00|91.089996|91.5|88.5|88.919998|28598000|88.919998
 ```
 
-each symbol in symbols.csv will have a table in sqlite db
+
 
 
 
 # how to use the data
 
-since for each symbol, the data is in a table, you can easily fetch the data use pandas
+since for each symbol, the data is in a table, you can easily fetch the data using pandas
 
 ```
 def get_data(symbol, start, end):
