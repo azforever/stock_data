@@ -1,3 +1,5 @@
+## How to use the script:
+
 change the path:
 
 
@@ -15,6 +17,7 @@ run
 
 ```
 python ./yahoo_data_loader.py
+```
 
 
 the data will be stored in the sqlite db
@@ -28,7 +31,24 @@ sqlite> select * from BABA limit 5;
 2014-09-23 00:00:00|88.940002|90.480003|86.620003|87.169998|39009800|87.169998
 2014-09-24 00:00:00|88.470001|90.57|87.220001|90.57|32088000|90.57
 2014-09-25 00:00:00|91.089996|91.5|88.5|88.919998|28598000|88.919998
-
 ```
 
 each symbol in symbols.csv will have a table in sqlite db
+
+
+
+# how to use the data
+
+since for each symbol, the data is in a table, you can easily fetch the data use pandas
+
+```
+def get_data(symbol, start, end):
+    """Read stock data (adjusted close) for given symbols from CSV files."""
+    #select * from PACB where Date <= '2016-08-05 00:00:00' and Date > '2016-08-01 00:00:00';
+    sql = "select Date, Open, High, Low, Volume, [Adj Close] from [{}] \
+            where Date >= '{}' and Date <='{}'".format(symbol, start, end)
+    df = pd.read_sql_query(sql,conn,index_col = 'Date',parse_dates = ['Date'])
+    df = df.rename(columns={'Adj Close': 'Close'})
+    return df
+```
+
