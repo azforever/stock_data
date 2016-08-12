@@ -25,6 +25,17 @@ the data will be stored in the sqlite db
 
 ```
 sqlite3 stock.db
+sqlite> .schema BABA
+CREATE TABLE "BABA" (
+"Date" TIMESTAMP,
+  "Open" REAL,
+  "High" REAL,
+  "Low" REAL,
+  "Close" REAL,
+  "Volume" INTEGER,
+  "Adj Close" REAL
+);
+CREATE INDEX "ix_BABA_Date"ON "BABA" ("Date");
 sqlite> select * from BABA limit 5;
 2014-09-19 00:00:00|92.699997|99.699997|89.949997|93.889999|271879400|93.889999
 2014-09-22 00:00:00|92.699997|92.949997|89.5|89.889999|66657800|89.889999
