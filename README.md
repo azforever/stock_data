@@ -43,7 +43,7 @@ since for each symbol, the data is in a table, you can easily fetch the data use
 
 ```
 def get_data(symbol, start, end):
-    """Read stock data (adjusted close) for given symbols from CSV files."""
+    """Read stock data (adjusted close) for given symbols from sqlite."""
     #select * from PACB where Date <= '2016-08-05 00:00:00' and Date > '2016-08-01 00:00:00';
     sql = "select Date, Open, High, Low, Volume, [Adj Close] from [{}] \
             where Date >= '{}' and Date <='{}'".format(symbol, start, end)
